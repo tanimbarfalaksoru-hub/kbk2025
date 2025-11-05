@@ -4,13 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KKT-MBD Keuskupan Amboina</title>
-    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://unpkg.com/lucide-react@0.263.1/dist/umd/lucide-react.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
-        /* Custom CSS untuk efek tambahan */
         :root {
             --primary-blue: #1e40af;
             --primary-amber: #d97706;
@@ -130,598 +126,635 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
+        
+        /* Navbar sticky effect */
+        .navbar-scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
     </style>
 </head>
-<body>
-    <div id="root"></div>
+<body class="min-h-screen bg-gradient-to-br from-blue-50 via-white to-amber-50">
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="fixed inset-0 flex items-center justify-center gradient-bg z-50">
+        <div class="text-center">
+            <div class="spinner mb-4"></div>
+            <h2 class="text-white text-xl font-semibold">Memuat KKT-MBD...</h2>
+        </div>
+    </div>
 
-    <script type="text/babel">
-        const { useState, useEffect, useRef } = React;
-        const { Calendar, Users, Heart, Cross, ChevronDown, Menu, X, MapPin, Phone, Mail, Clock } = lucideReact;
-
-        const App = () => {
-            const [isMenuOpen, setIsMenuOpen] = useState(false);
-            const [activeSection, setActiveSection] = useState('home');
-            const [currentTestimonial, setCurrentTestimonial] = useState(0);
-            const [isLoading, setIsLoading] = useState(true);
-            const [scrolled, setScrolled] = useState(false);
-            
-            // Refs untuk animasi scroll
-            const aboutRef = useRef(null);
-            const activitiesRef = useRef(null);
-            const structureRef = useRef(null);
-            const contactRef = useRef(null);
-
-            const testimonials = [
-                {
-                    name: "Benjamin Samangun, SH.MH",
-                    role: "Ketua Umum KBK KKT-MBD",
-                    text: "Kami berkomitmen untuk menjadi wadah persaudaraan yang memperkuat iman dan kehidupan bermasyarakat."
-                },
-                {
-                    name: "Marthen Desa, S.Sos",
-                    role: "Sekretaris",
-                    text: "Setiap kegiatan kami selalu diwarnai dengan semangat kasih dan pelayanan kepada sesama."
-                },
-                {
-                    name: "Agustinus Wens Ohoitimur, S.Sos, M.Kom",
-                    role: "Ketua Seksi Hubmas",
-                    text: "Keuskupan Amboina memberikan bimbingan spiritual yang luar biasa bagi perjalanan organisasi kami."
-                }
-            ];
-
-            const navigation = [
-                { name: 'Beranda', href: '#home' },
-                { name: 'Tentang Kami', href: '#about' },
-                { name: 'Kegiatan', href: '#activities' },
-                { name: 'Struktur', href: '#structure' },
-                { name: 'Kontak', href: '#contact' }
-            ];
-
-            // Effect untuk testimonial slider
-            useEffect(() => {
-                const interval = setInterval(() => {
-                    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-                }, 5000);
-                return () => clearInterval(interval);
-            }, []);
-
-            // Effect untuk loading simulasi
-            useEffect(() => {
-                const timer = setTimeout(() => {
-                    setIsLoading(false);
-                }, 1500);
-                return () => clearTimeout(timer);
-            }, []);
-
-            // Effect untuk scroll event
-            useEffect(() => {
-                const handleScroll = () => {
-                    const isScrolled = window.scrollY > 50;
-                    setScrolled(isScrolled);
-                    
-                    // Update active section berdasarkan scroll position
-                    const sections = ['home', 'about', 'activities', 'structure', 'contact'];
-                    const current = sections.find(section => {
-                        const element = document.getElementById(section);
-                        if (element) {
-                            const rect = element.getBoundingClientRect();
-                            return rect.top <= 100 && rect.bottom >= 100;
-                        }
-                        return false;
-                    });
-                    
-                    if (current) {
-                        setActiveSection(current);
-                    }
-                };
-
-                window.addEventListener('scroll', handleScroll);
-                return () => window.removeEventListener('scroll', handleScroll);
-            }, []);
-
-            // Effect untuk animasi fade-in saat scroll
-            useEffect(() => {
-                const observerOptions = {
-                    root: null,
-                    rootMargin: '0px',
-                    threshold: 0.1
-                };
-
-                const observerCallback = (entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('visible');
-                        }
-                    });
-                };
-
-                const observer = new IntersectionObserver(observerCallback, observerOptions);
+    <!-- Header -->
+    <header id="header" class="fixed w-full z-40 transition-all duration-300 py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-gradient-to-r from-blue-600 to-amber-600 p-2 rounded-lg">
+                        <i class="fas fa-cross text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-gray-900">KKT-MBD</h1>
+                        <p class="text-xs text-gray-600">Keuskupan Amboina</p>
+                    </div>
+                </div>
                 
-                // Observe semua elemen dengan class fade-in
-                document.querySelectorAll('.fade-in').forEach(el => {
-                    observer.observe(el);
-                });
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium nav-link" data-section="home">Beranda</a>
+                    <a href="#about" class="text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium nav-link" data-section="about">Tentang Kami</a>
+                    <a href="#activities" class="text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium nav-link" data-section="activities">Kegiatan</a>
+                    <a href="#structure" class="text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium nav-link" data-section="structure">Struktur</a>
+                    <a href="#contact" class="text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium nav-link" data-section="contact">Kontak</a>
+                </nav>
 
-                return () => observer.disconnect();
-            }, []);
+                <!-- Mobile menu button -->
+                <button id="mobileMenuButton" class="md:hidden text-gray-700">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
 
-            // Fungsi untuk scroll ke section
-            const scrollToSection = (sectionId) => {
-                const element = document.getElementById(sectionId);
-                if (element) {
-                    window.scrollTo({
-                        top: element.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-                setIsMenuOpen(false);
-            };
+            <!-- Mobile Navigation -->
+            <div id="mobileMenu" class="hidden md:hidden pb-4 pt-4">
+                <nav class="flex flex-col space-y-2">
+                    <a href="#home" class="text-gray-700 hover:bg-gray-100 transition-colors duration-200 font-medium py-2 px-4 rounded-lg mobile-nav-link" data-section="home">Beranda</a>
+                    <a href="#about" class="text-gray-700 hover:bg-gray-100 transition-colors duration-200 font-medium py-2 px-4 rounded-lg mobile-nav-link" data-section="about">Tentang Kami</a>
+                    <a href="#activities" class="text-gray-700 hover:bg-gray-100 transition-colors duration-200 font-medium py-2 px-4 rounded-lg mobile-nav-link" data-section="activities">Kegiatan</a>
+                    <a href="#structure" class="text-gray-700 hover:bg-gray-100 transition-colors duration-200 font-medium py-2 px-4 rounded-lg mobile-nav-link" data-section="structure">Struktur</a>
+                    <a href="#contact" class="text-gray-700 hover:bg-gray-100 transition-colors duration-200 font-medium py-2 px-4 rounded-lg mobile-nav-link" data-section="contact">Kontak</a>
+                </nav>
+            </div>
+        </div>
+    </header>
 
-            // Fungsi untuk handle form submit
-            const handleSubmit = (e) => {
-                e.preventDefault();
-                alert('Terima kasih! Pesan Anda telah berhasil dikirim.');
-                e.target.reset();
-            };
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+        <div class="gradient-bg absolute inset-0"></div>
+        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20" style="background-image: url('https://images.unsplash.com/photo-1546146830-2cca9512c68e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80')"></div>
+        
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
+            <div class="glass rounded-2xl p-8 md:p-12 shadow-2xl fade-in">
+                <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+                    Kaum Bapak Katolik
+                    <span class="heading-gradient block">
+                        KKT-MBD
+                    </span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-700 mb-8 max-w-3xl mx-auto leading-relaxed">
+                    Wadah persaudaraan para bapak Katolik yang berkomitmen untuk membangun iman, 
+                    pelayanan dan kehidupan bermasyarakat yang berdasarkan kasih Kristus
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="btn-primary text-white px-8 py-4 rounded-full font-semibold transform transition-all duration-200 join-btn">
+                        Bergabung Sekarang
+                    </button>
+                    <button class="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-full font-semibold hover:bg-blue-600 hover:text-white transition-all duration-200 learn-btn">
+                        Pelajari Lebih Lanjut
+                    </button>
+                </div>
+            </div>
+        </div>
 
-            if (isLoading) {
-                return (
-                    <div className="min-h-screen flex items-center justify-center gradient-bg">
-                        <div className="text-center">
-                            <div className="spinner mb-4"></div>
-                            <h2 className="text-white text-xl font-semibold">Memuat KKT-MBD...</h2>
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fas fa-chevron-down text-white text-2xl cursor-pointer scroll-down-btn"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white fade-in">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Tentang Kami</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Organisasi Kaum Bapak Katolik yang berdedikasi untuk memperkuat iman dan pelayanan 
+                    dalam bingkai keuskupan yang penuh kasih dan kebijaksanaan
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <img 
+                        src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1473&q=80"
+                        alt="Gereja Katolik Amboina"
+                        class="rounded-2xl shadow-2xl hover-card w-full"
+                    />
+                </div>
+                <div class="space-y-6">
+                    <div class="bg-gradient-to-r from-blue-50 to-amber-50 p-6 rounded-2xl hover-card">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Visi Kami</h3>
+                        <p class="text-gray-700 leading-relaxed">
+                            Menjadi wadah yang membentuk kaum bapak Katolik yang memiliki iman yang kuat, 
+                            berjiwa pelayan, dan menjadi teladan dalam keluarga serta masyarakat.
+                        </p>
+                    </div>
+                    <div class="bg-gradient-to-r from-amber-50 to-blue-50 p-6 rounded-2xl hover-card">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Misi Kami</h3>
+                        <ul class="space-y-2 text-gray-700">
+                            <li class="flex items-start">
+                                <i class="fas fa-heart text-red-500 mt-1 mr-3"></i>
+                                Memperkuat iman dan spiritualitas kaum bapak Katolik
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-heart text-red-500 mt-1 mr-3"></i>
+                                Membangun solidaritas dan persaudaraan sejati
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-heart text-red-500 mt-1 mr-3"></i>
+                                Melakukan pelayanan kepada sesama dan masyarakat
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-heart text-red-500 mt-1 mr-3"></i>
+                                Menjadi teladan dalam keluarga dan lingkungan hidup
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities Section -->
+    <section id="activities" class="py-20 bg-gradient-to-br from-blue-50 to-amber-50 fade-in">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Kegiatan Kami</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Berbagai kegiatan yang kami laksanakan untuk memperkuat iman, persaudaraan, 
+                    dan pelayanan kepada masyarakat
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover-card fade-in">
+                    <div class="text-4xl mb-4">⛪</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Ibadah Mingguan</h3>
+                    <p class="text-gray-600 mb-4">Ibadah bersama setiap Minggu pagi yang memperkuat ikatan spiritual dan komunitas</p>
+                    <div class="flex items-center text-blue-600">
+                        <i class="far fa-clock mr-2"></i>
+                        <span class="text-sm">Setiap Minggu, 06:00 WIT</span>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover-card fade-in">
+                    <div class="text-4xl mb-4">🤝</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Pelayanan Sosial</h3>
+                    <p class="text-gray-600 mb-4">Program pelayanan kepada masyarakat yang membutuhkan, terutama dalam masa kesulitan</p>
+                    <div class="flex items-center text-blue-600">
+                        <i class="far fa-clock mr-2"></i>
+                        <span class="text-sm">Bulanan</span>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover-card fade-in">
+                    <div class="text-4xl mb-4">🧘</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Retret Spiritual</h3>
+                    <p class="text-gray-600 mb-4">Retret tahunan untuk memperdalam iman dan refleksi pribadi serta komunitas</p>
+                    <div class="flex items-center text-blue-600">
+                        <i class="far fa-clock mr-2"></i>
+                        <span class="text-sm">Tahunan</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Structure Section -->
+    <section id="structure" class="py-20 bg-white fade-in">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Struktur Organisasi</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Pemimpin yang berdedikasi dan kompeten yang membimbing organisasi kami 
+                    dengan semangat pelayanan dan kasih Kristus
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gradient-to-br from-blue-50 to-amber-50 rounded-2xl p-6 text-center hover-card fade-in">
+                    <img 
+                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+                        alt="Pak Yusuf Latuconsina"
+                        class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-white shadow-md"
+                    />
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Pak Yusuf Latuconsina</h3>
+                    <p class="text-blue-600 font-semibold mb-3">Ketua Umum</p>
+                    <p class="text-gray-600 text-sm">Pemimpin visioner dengan pengalaman panjang dalam pelayanan gerejawi</p>
+                </div>
+                <div class="bg-gradient-to-br from-blue-50 to-amber-50 rounded-2xl p-6 text-center hover-card fade-in">
+                    <img 
+                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                        alt="Pak Fransisco Rumbrawer"
+                        class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-white shadow-md"
+                    />
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Pak Fransisco Rumbrawer</h3>
+                    <p class="text-blue-600 font-semibold mb-3">Sekretaris Umum</p>
+                    <p class="text-gray-600 text-sm">Ahli administrasi dengan komitmen tinggi terhadap organisasi</p>
+                </div>
+                <div class="bg-gradient-to-br from-blue-50 to-amber-50 rounded-2xl p-6 text-center hover-card fade-in">
+                    <img 
+                        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+                        alt="Pak Petrus Manuputty"
+                        class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-white shadow-md"
+                    />
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Pak Petrus Manuputty</h3>
+                    <p class="text-blue-600 font-semibold mb-3">Bendahara</p>
+                    <p class="text-gray-600 text-sm">Profesional keuangan yang menjaga transparansi dan akuntabilitas</p>
+                </div>
+                <div class="bg-gradient-to-br from-blue-50 to-amber-50 rounded-2xl p-6 text-center hover-card fade-in">
+                    <img 
+                        src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+                        alt="Ibu Maria Siahaya"
+                        class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-white shadow-md"
+                    />
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Ibu Maria Siahaya</h3>
+                    <p class="text-blue-600 font-semibold mb-3">Ketua Bidang Sosial</p>
+                    <p class="text-gray-600 text-sm">Pemimpin pelayanan sosial yang penuh semangat dan kasih</p>
+                </div>
+                <div class="bg-gradient-to-br from-blue-50 to-amber-50 rounded-2xl p-6 text-center hover-card fade-in">
+                    <img 
+                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+                        alt="Pak Daniel Kastanya"
+                        class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-white shadow-md"
+                    />
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Pak Daniel Kastanya</h3>
+                    <p class="text-blue-600 font-semibold mb-3">Ketua Bidang Spiritual</p>
+                    <p class="text-gray-600 text-sm">Pendamping spiritual dengan kebijaksanaan dan ketulusan luar biasa</p>
+                </div>
+                <div class="bg-gradient-to-br from-blue-50 to-amber-50 rounded-2xl p-6 text-center hover-card fade-in">
+                    <img 
+                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+                        alt="Pak Yohanes Ririmasse"
+                        class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-white shadow-md"
+                    />
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Pak Yohanes Ririmasse</h3>
+                    <p class="text-blue-600 font-semibold mb-3">Ketua Bidang Kepemudaan</p>
+                    <p class="text-gray-600 text-sm">Pembina generasi muda dengan semangat dan dedikasi tinggi</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-gradient-to-r from-blue-600 to-amber-600 fade-in">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-bold text-white mb-12">Testimoni Anggota</h2>
+            
+            <div class="glass rounded-2xl p-8">
+                <div class="text-white">
+                    <i class="fas fa-heart text-amber-300 text-3xl mx-auto mb-6 block"></i>
+                    <blockquote id="testimonialText" class="text-xl md:text-2xl text-white mb-6 leading-relaxed testimonial-slide">
+                        "Kami berkomitmen untuk menjadi wadah persaudaraan yang memperkuat iman dan kehidupan bermasyarakat."
+                    </blockquote>
+                    <div id="testimonialAuthor" class="testimonial-slide">
+                        <p class="font-bold text-white text-lg">Benjamin Samangun, SH.MH</p>
+                        <p class="text-amber-200">Ketua Umum KBK KKT-MBD</p>
+                    </div>
+                </div>
+                
+                <!-- Testimonial indicators -->
+                <div class="flex justify-center mt-6 space-x-2">
+                    <button class="h-3 w-3 rounded-full bg-white testimonial-indicator" data-index="0"></button>
+                    <button class="h-3 w-3 rounded-full bg-white/50 testimonial-indicator" data-index="1"></button>
+                    <button class="h-3 w-3 rounded-full bg-white/50 testimonial-indicator" data-index="2"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white fade-in">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Hubungi Kami</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Ingin bergabung atau mengetahui lebih lanjut tentang KKT-MBD? 
+                    Silakan hubungi kami melalui informasi berikut
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="space-y-8">
+                    <div class="flex items-start space-x-4 hover-card p-4 rounded-xl">
+                        <i class="fas fa-map-marker-alt text-blue-600 mt-1"></i>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">Alamat</h3>
+                            <p class="text-gray-600">Gereja Katolik Santo Yosep<br />Jl. Sultan Hasanuddin No. 1, Ambon<br />Maluku, Indonesia</p>
                         </div>
                     </div>
-                );
-            }
-
-            return (
-                <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-amber-50">
-                    {/* Header */}
-                    <header className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-lg py-2' : 'bg-transparent py-4'}`}>
-                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                            <div className="flex justify-between items-center">
-                                <div className="flex items-center space-x-3">
-                                    <div className="bg-gradient-to-r from-blue-600 to-amber-600 p-2 rounded-lg">
-                                        <Cross className="h-8 w-8 text-white" />
-                                    </div>
-                                    <div>
-                                        <h1 className="text-xl font-bold text-gray-900">KKT-MBD</h1>
-                                        <p className="text-xs text-gray-600">Keuskupan Amboina</p>
-                                    </div>
-                                </div>
-                                
-                                {/* Desktop Navigation */}
-                                <nav className="hidden md:flex space-x-8">
-                                    {navigation.map((item) => (
-                                        <a
-                                            key={item.name}
-                                            href={item.href}
-                                            className={`transition-colors duration-200 font-medium ${activeSection === item.href.substring(1) ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-700 hover:text-blue-600'}`}
-                                            onClick={(e) => {
-                                                e.preventDefault();
-                                                scrollToSection(item.href.substring(1));
-                                            }}
-                                        >
-                                            {item.name}
-                                        </a>
-                                    ))}
-                                </nav>
-
-                                {/* Mobile menu button */}
-                                <button
-                                    className="md:hidden"
-                                    onClick={() => setIsMenuOpen(!isMenuOpen)}
-                                >
-                                    {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-                                </button>
-                            </div>
-
-                            {/* Mobile Navigation */}
-                            {isMenuOpen && (
-                                <div className="md:hidden pb-4 pt-4">
-                                    <nav className="flex flex-col space-y-2">
-                                        {navigation.map((item) => (
-                                            <a
-                                                key={item.name}
-                                                href={item.href}
-                                                className={`transition-colors duration-200 font-medium py-2 px-4 rounded-lg ${activeSection === item.href.substring(1) ? 'bg-blue-100 text-blue-600' : 'text-gray-700 hover:bg-gray-100'}`}
-                                                onClick={(e) => {
-                                                    e.preventDefault();
-                                                    scrollToSection(item.href.substring(1));
-                                                }}
-                                            >
-                                                {item.name}
-                                            </a>
-                                        ))}
-                                    </nav>
-                                </div>
-                            )}
+                    
+                    <div class="flex items-start space-x-4 hover-card p-4 rounded-xl">
+                        <i class="fas fa-phone text-blue-600 mt-1"></i>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">Telepon</h3>
+                            <p class="text-gray-600">+62 911 123456<br />+62 911 789012</p>
                         </div>
-                    </header>
-
-                    {/* Hero Section */}
-                    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
-                        <div className="gradient-bg absolute inset-0"></div>
-                        <div 
-                            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                            style={{
-                                backgroundImage: 'url(https://images.unsplash.com/photo-1546146830-2cca9512c68e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80)',
-                                opacity: 0.2
-                            }}
-                        ></div>
-                        
-                        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
-                            <div className="glass rounded-2xl p-8 md:p-12 shadow-2xl fade-in">
-                                <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-                                    Kaum Bapak Katolik
-                                    <span className="heading-gradient block">
-                                        KKT-MBD
-                                    </span>
-                                </h1>
-                                <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-3xl mx-auto leading-relaxed">
-                                    Wadah persaudaraan para bapak Katolik yang berkomitmen untuk membangun iman, 
-                                    pelayanan dan kehidupan bermasyarakat yang berdasarkan kasih Kristus
-                                </p>
-                                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                                    <button 
-                                        className="btn-primary text-white px-8 py-4 rounded-full font-semibold transform transition-all duration-200"
-                                        onClick={() => scrollToSection('contact')}
-                                    >
-                                        Bergabung Sekarang
-                                    </button>
-                                    <button 
-                                        className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-full font-semibold hover:bg-blue-600 hover:text-white transition-all duration-200"
-                                        onClick={() => scrollToSection('about')}
-                                    >
-                                        Pelajari Lebih Lanjut
-                                    </button>
-                                </div>
-                            </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-4 hover-card p-4 rounded-xl">
+                        <i class="fas fa-envelope text-blue-600 mt-1"></i>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">Email</h3>
+                            <p class="text-gray-600">kktmbd@keuskupanamboina.org<br />info@kktmbd-ambon.org</p>
                         </div>
-
-                        {/* Scroll indicator */}
-                        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-                            <ChevronDown 
-                                className="h-6 w-6 text-white cursor-pointer" 
-                                onClick={() => scrollToSection('about')}
-                            />
-                        </div>
-                    </section>
-
-                    {/* About Section */}
-                    <section id="about" ref={aboutRef} className="py-20 bg-white fade-in">
-                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                            <div className="text-center mb-16">
-                                <h2 className="text-4xl font-bold text-gray-900 mb-4">Tentang Kami</h2>
-                                <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                                    Organisasi Kaum Bapak Katolik yang berdedikasi untuk memperkuat iman dan pelayanan 
-                                    dalam bingkai keuskupan yang penuh kasih dan kebijaksanaan
-                                </p>
-                            </div>
-
-                            <div className="grid md:grid-cols-2 gap-12 items-center">
-                                <div>
-                                    <img 
-                                        src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1473&q=80"
-                                        alt="Gereja Katolik Amboina"
-                                        className="rounded-2xl shadow-2xl hover-card"
-                                    />
-                                </div>
-                                <div className="space-y-6">
-                                    <div className="bg-gradient-to-r from-blue-50 to-amber-50 p-6 rounded-2xl hover-card">
-                                        <h3 className="text-2xl font-bold text-gray-900 mb-4">Visi Kami</h3>
-                                        <p className="text-gray-700 leading-relaxed">
-                                            Menjadi wadah yang membentuk kaum bapak Katolik yang memiliki iman yang kuat, 
-                                            berjiwa pelayan, dan menjadi teladan dalam keluarga serta masyarakat.
-                                        </p>
-                                    </div>
-                                    <div className="bg-gradient-to-r from-amber-50 to-blue-50 p-6 rounded-2xl hover-card">
-                                        <h3 className="text-2xl font-bold text-gray-900 mb-4">Misi Kami</h3>
-                                        <ul className="space-y-2 text-gray-700">
-                                            <li className="flex items-start">
-                                                <Heart className="h-5 w-5 text-red-500 mt-1 mr-3 flex-shrink-0" />
-                                                Memperkuat iman dan spiritualitas kaum bapak Katolik
-                                            </li>
-                                            <li className="flex items-start">
-                                                <Heart className="h-5 w-5 text-red-500 mt-1 mr-3 flex-shrink-0" />
-                                                Membangun solidaritas dan persaudaraan sejati
-                                            </li>
-                                            <li className="flex items-start">
-                                                <Heart className="h-5 w-5 text-red-500 mt-1 mr-3 flex-shrink-0" />
-                                                Melakukan pelayanan kepada sesama dan masyarakat
-                                            </li>
-                                            <li className="flex items-start">
-                                                <Heart className="h-5 w-5 text-red-500 mt-1 mr-3 flex-shrink-0" />
-                                                Menjadi teladan dalam keluarga dan lingkungan hidup
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Activities Section */}
-                    <section id="activities" ref={activitiesRef} className="py-20 bg-gradient-to-br from-blue-50 to-amber-50 fade-in">
-                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                            <div className="text-center mb-16">
-                                <h2 className="text-4xl font-bold text-gray-900 mb-4">Kegiatan Kami</h2>
-                                <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                                    Berbagai kegiatan yang kami laksanakan untuk memperkuat iman, persaudaraan, 
-                                    dan pelayanan kepada masyarakat
-                                </p>
-                            </div>
-
-                            <div className="grid md:grid-cols-3 gap-8">
-                                {[
-                                    {
-                                        title: "Ibadah Mingguan",
-                                        description: "Ibadah bersama setiap Minggu pagi yang memperkuat ikatan spiritual dan komunitas",
-                                        icon: "⛪",
-                                        date: "Setiap Minggu, 06:00 WIT"
-                                    },
-                                    {
-                                        title: "Pelayanan Sosial",
-                                        description: "Program pelayanan kepada masyarakat yang membutuhkan, terutama dalam masa kesulitan",
-                                        icon: "🤝",
-                                        date: "Bulanan"
-                                    },
-                                    {
-                                        title: "Retret Spiritual",
-                                        description: "Retret tahunan untuk memperdalam iman dan refleksi pribadi serta komunitas",
-                                        icon: "🧘",
-                                        date: "Tahunan"
-                                    }
-                                ].map((activity, index) => (
-                                    <div key={index} className="bg-white rounded-2xl p-8 shadow-lg hover-card fade-in" style={{animationDelay: `${index * 0.2}s`}}>
-                                        <div className="text-4xl mb-4">{activity.icon}</div>
-                                        <h3 className="text-xl font-bold text-gray-900 mb-3">{activity.title}</h3>
-                                        <p className="text-gray-600 mb-4">{activity.description}</p>
-                                        <div className="flex items-center text-blue-600">
-                                            <Clock className="h-4 w-4 mr-2" />
-                                            <span className="text-sm">{activity.date}</span>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Structure Section */}
-                    <section id="structure" ref={structureRef} className="py-20 bg-white fade-in">
-                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                            <div className="text-center mb-16">
-                                <h2 className="text-4xl font-bold text-gray-900 mb-4">Struktur Organisasi</h2>
-                                <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                                    Pemimpin yang berdedikasi dan kompeten yang membimbing organisasi kami 
-                                    dengan semangat pelayanan dan kasih Kristus
-                                </p>
-                            </div>
-
-                            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                                {[
-                                    {
-                                        name: "Pak Yusuf Latuconsina",
-                                        position: "Ketua Umum",
-                                        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-                                        bio: "Pemimpin visioner dengan pengalaman panjang dalam pelayanan gerejawi"
-                                    },
-                                    {
-                                        name: "Pak Fransisco Rumbrawer",
-                                        position: "Sekretaris Umum",
-                                        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                                        bio: "Ahli administrasi dengan komitmen tinggi terhadap organisasi"
-                                    },
-                                    {
-                                        name: "Pak Petrus Manuputty",
-                                        position: "Bendahara",
-                                        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-                                        bio: "Profesional keuangan yang menjaga transparansi dan akuntabilitas"
-                                    },
-                                    {
-                                        name: "Ibu Maria Siahaya",
-                                        position: "Ketua Bidang Sosial",
-                                        image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-                                        bio: "Pemimpin pelayanan sosial yang penuh semangat dan kasih"
-                                    },
-                                    {
-                                        name: "Pak Daniel Kastanya",
-                                        position: "Ketua Bidang Spiritual",
-                                        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-                                        bio: "Pendamping spiritual dengan kebijaksanaan dan ketulusan luar biasa"
-                                    },
-                                    {
-                                        name: "Pak Yohanes Ririmasse",
-                                        position: "Ketua Bidang Kepemudaan",
-                                        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-                                        bio: "Pembina generasi muda dengan semangat dan dedikasi tinggi"
-                                    }
-                                ].map((member, index) => (
-                                    <div key={index} className="bg-gradient-to-br from-blue-50 to-amber-50 rounded-2xl p-6 text-center hover-card fade-in" style={{animationDelay: `${index * 0.1}s`}}>
-                                        <img 
-                                            src={member.image}
-                                            alt={member.name}
-                                            className="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-white shadow-md"
-                                        />
-                                        <h3 className="text-xl font-bold text-gray-900 mb-2">{member.name}</h3>
-                                        <p className="text-blue-600 font-semibold mb-3">{member.position}</p>
-                                        <p className="text-gray-600 text-sm">{member.bio}</p>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Testimonials Section */}
-                    <section className="py-20 bg-gradient-to-r from-blue-600 to-amber-600 fade-in">
-                        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                            <h2 className="text-4xl font-bold text-white mb-12">Testimoni Anggota</h2>
-                            
-                            <div className="glass rounded-2xl p-8">
-                                <div className="text-white">
-                                    <Heart className="h-12 w-12 text-amber-300 mx-auto mb-6" />
-                                    <blockquote className="text-xl md:text-2xl text-white mb-6 leading-relaxed testimonial-slide">
-                                        "{testimonials[currentTestimonial].text}"
-                                    </blockquote>
-                                    <div className="testimonial-slide">
-                                        <p className="font-bold text-white text-lg">{testimonials[currentTestimonial].name}</p>
-                                        <p className="text-amber-200">{testimonials[currentTestimonial].role}</p>
-                                    </div>
-                                </div>
-                                
-                                {/* Testimonial indicators */}
-                                <div className="flex justify-center mt-6 space-x-2">
-                                    {testimonials.map((_, index) => (
-                                        <button
-                                            key={index}
-                                            className={`h-3 w-3 rounded-full transition-all ${index === currentTestimonial ? 'bg-white' : 'bg-white/50'}`}
-                                            onClick={() => setCurrentTestimonial(index)}
-                                        />
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Contact Section */}
-                    <section id="contact" ref={contactRef} className="py-20 bg-white fade-in">
-                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                            <div className="text-center mb-16">
-                                <h2 className="text-4xl font-bold text-gray-900 mb-4">Hubungi Kami</h2>
-                                <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                                    Ingin bergabung atau mengetahui lebih lanjut tentang KKT-MBD? 
-                                    Silakan hubungi kami melalui informasi berikut
-                                </p>
-                            </div>
-
-                            <div className="grid md:grid-cols-2 gap-12">
-                                <div className="space-y-8">
-                                    <div className="flex items-start space-x-4 hover-card p-4 rounded-xl">
-                                        <MapPin className="h-6 w-6 text-blue-600 mt-1 flex-shrink-0" />
-                                        <div>
-                                            <h3 className="text-lg font-semibold text-gray-900">Alamat</h3>
-                                            <p className="text-gray-600">Gereja Katolik Santo Yosep<br />Jl. Sultan Hasanuddin No. 1, Ambon<br />Maluku, Indonesia</p>
-                                        </div>
-                                    </div>
-                                    
-                                    <div className="flex items-start space-x-4 hover-card p-4 rounded-xl">
-                                        <Phone className="h-6 w-6 text-blue-600 mt-1 flex-shrink-0" />
-                                        <div>
-                                            <h3 className="text-lg font-semibold text-gray-900">Telepon</h3>
-                                            <p className="text-gray-600">+62 911 123456<br />+62 911 789012</p>
-                                        </div>
-                                    </div>
-                                    
-                                    <div className="flex items-start space-x-4 hover-card p-4 rounded-xl">
-                                        <Mail className="h-6 w-6 text-blue-600 mt-1 flex-shrink-0" />
-                                        <div>
-                                            <h3 className="text-lg font-semibold text-gray-900">Email</h3>
-                                            <p className="text-gray-600">kktmbd@keuskupanamboina.org<br />info@kktmbd-ambon.org</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="bg-gradient-to-br from-blue-50 to-amber-50 p-8 rounded-2xl hover-card">
-                                    <h3 className="text-2xl font-bold text-gray-900 mb-6">Kirim Pesan</h3>
-                                    <form className="space-y-4" onSubmit={handleSubmit}>
-                                        <input 
-                                            type="text" 
-                                            placeholder="Nama Lengkap"
-                                            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                                            required
-                                        />
-                                        <input 
-                                            type="email" 
-                                            placeholder="Email Anda"
-                                            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                                            required
-                                        />
-                                        <input 
-                                            type="text" 
-                                            placeholder="Subjek"
-                                            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                                            required
-                                        />
-                                        <textarea 
-                                            rows="4"
-                                            placeholder="Pesan Anda"
-                                            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                                            required
-                                        ></textarea>
-                                        <button 
-                                            type="submit"
-                                            className="w-full btn-primary text-white py-3 rounded-lg font-semibold transform transition-all duration-200"
-                                        >
-                                            Kirim Pesan
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Footer */}
-                    <footer className="bg-gray-900 text-white py-12 fade-in">
-                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                            <div className="grid md:grid-cols-3 gap-8">
-                                <div>
-                                    <div className="flex items-center space-x-3 mb-4">
-                                        <div className="bg-gradient-to-r from-blue-600 to-amber-600 p-2 rounded-lg">
-                                            <Cross className="h-6 w-6 text-white" />
-                                        </div>
-                                        <div>
-                                            <h3 className="text-lg font-bold">KKT-MBD</h3>
-                                            <p className="text-sm text-gray-400">Keuskupan Amboina</p>
-                                        </div>
-                                    </div>
-                                    <p className="text-gray-400">
-                                        Wadah persaudaraan kaum bapak Katolik yang berdedikasi untuk memperkuat iman 
-                                        dan pelayanan dalam bingkai kasih Kristus.
-                                    </p>
-                                </div>
-                                
-                                <div>
-                                    <h4 className="text-lg font-semibold mb-4">Tautan Cepat</h4>
-                                    <ul className="space-y-2 text-gray-400">
-                                        {navigation.map(item => (
-                                            <li key={item.name}>
-                                                <a 
-                                                    href={item.href} 
-                                                    className="hover:text-white transition-colors"
-                                                    onClick={(e) => {
-                                                        e.preventDefault();
-                                                        scrollToSection(item.href.substring(1));
-                                                    }}
-                                                >
-                                                    {item.name}
-                                                </a>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                                
-                                <div>
-                                    <h4 className="text-lg font-semibold mb-4">Jam Operasional</h4>
-                                    <div className="space-y-2 text-gray-400">
-                                        <p>Senin - Jumat: 08:00 - 17:00</p>
-                                        <p>Sabtu: 08:00 - 12:00</p>
-                                        <p>Minggu: Ibadah Mingguan</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-                                <p>&copy; 2025 Kaum Bapak Katolik KKT-MBD Keuskupan Amboina. Semua Hak Dilindungi.</p>
-                            </div>
-                        </div>
-                    </footer>
+                    </div>
                 </div>
-            );
-        };
 
-        ReactDOM.render(<App />, document.getElementById('root'));
+                <div class="bg-gradient-to-br from-blue-50 to-amber-50 p-8 rounded-2xl hover-card">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Kirim Pesan</h3>
+                    <form id="contactForm" class="space-y-4">
+                        <input 
+                            type="text" 
+                            placeholder="Nama Lengkap"
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                            required
+                        />
+                        <input 
+                            type="email" 
+                            placeholder="Email Anda"
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                            required
+                        />
+                        <input 
+                            type="text" 
+                            placeholder="Subjek"
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                            required
+                        />
+                        <textarea 
+                            rows="4"
+                            placeholder="Pesan Anda"
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                            required
+                        ></textarea>
+                        <button 
+                            type="submit"
+                            class="w-full btn-primary text-white py-3 rounded-lg font-semibold transform transition-all duration-200"
+                        >
+                            Kirim Pesan
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 fade-in">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="bg-gradient-to-r from-blue-600 to-amber-600 p-2 rounded-lg">
+                            <i class="fas fa-cross text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold">KKT-MBD</h3>
+                            <p class="text-sm text-gray-400">Keuskupan Amboina</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400">
+                        Wadah persaudaraan kaum bapak Katolik yang berdedikasi untuk memperkuat iman 
+                        dan pelayanan dalam bingkai kasih Kristus.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Tautan Cepat</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#home" class="hover:text-white transition-colors footer-link">Beranda</a></li>
+                        <li><a href="#about" class="hover:text-white transition-colors footer-link">Tentang Kami</a></li>
+                        <li><a href="#activities" class="hover:text-white transition-colors footer-link">Kegiatan</a></li>
+                        <li><a href="#contact" class="hover:text-white transition-colors footer-link">Kontak</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Jam Operasional</h4>
+                    <div class="space-y-2 text-gray-400">
+                        <p>Senin - Jumat: 08:00 - 17:00</p>
+                        <p>Sabtu: 08:00 - 12:00</p>
+                        <p>Minggu: Ibadah Mingguan</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Kaum Bapak Katolik KKT-MBD Keuskupan Amboina. Semua Hak Dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Data untuk testimonial
+        const testimonials = [
+            {
+                name: "Benjamin Samangun, SH.MH",
+                role: "Ketua Umum KBK KKT-MBD",
+                text: "Kami berkomitmen untuk menjadi wadah persaudaraan yang memperkuat iman dan kehidupan bermasyarakat."
+            },
+            {
+                name: "Marthen Desa, S.Sos",
+                role: "Sekretaris",
+                text: "Setiap kegiatan kami selalu diwarnai dengan semangat kasih dan pelayanan kepada sesama."
+            },
+            {
+                name: "Agustinus Wens Ohoitimur, S.Sos, M.Kom",
+                role: "Ketua Seksi Hubmas",
+                text: "Keuskupan Amboina memberikan bimbingan spiritual yang luar biasa bagi perjalanan organisasi kami."
+            }
+        ];
+
+        // State aplikasi
+        let currentTestimonial = 0;
+        let testimonialInterval;
+
+        // Fungsi untuk scroll ke section
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                window.scrollTo({
+                    top: element.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+            closeMobileMenu();
+        }
+
+        // Fungsi untuk update testimonial
+        function updateTestimonial(index) {
+            const testimonialText = document.getElementById('testimonialText');
+            const testimonialAuthor = document.getElementById('testimonialAuthor');
+            const indicators = document.querySelectorAll('.testimonial-indicator');
+            
+            // Update konten testimonial
+            testimonialText.textContent = `"${testimonials[index].text}"`;
+            testimonialAuthor.innerHTML = `
+                <p class="font-bold text-white text-lg">${testimonials[index].name}</p>
+                <p class="text-amber-200">${testimonials[index].role}</p>
+            `;
+            
+            // Update indikator aktif
+            indicators.forEach((indicator, i) => {
+                if (i === index) {
+                    indicator.classList.remove('bg-white/50');
+                    indicator.classList.add('bg-white');
+                } else {
+                    indicator.classList.remove('bg-white');
+                    indicator.classList.add('bg-white/50');
+                }
+            });
+            
+            currentTestimonial = index;
+        }
+
+        // Fungsi untuk next testimonial
+        function nextTestimonial() {
+            const nextIndex = (currentTestimonial + 1) % testimonials.length;
+            updateTestimonial(nextIndex);
+        }
+
+        // Fungsi untuk toggle mobile menu
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuButton = document.getElementById('mobileMenuButton');
+            
+            mobileMenu.classList.toggle('hidden');
+            
+            // Update ikon menu
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenuButton.innerHTML = '<i class="fas fa-bars text-xl"></i>';
+            } else {
+                mobileMenuButton.innerHTML = '<i class="fas fa-times text-xl"></i>';
+            }
+        }
+
+        // Fungsi untuk close mobile menu
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuButton = document.getElementById('mobileMenuButton');
+            
+            mobileMenu.classList.add('hidden');
+            mobileMenuButton.innerHTML = '<i class="fas fa-bars text-xl"></i>';
+        }
+
+        // Fungsi untuk handle form submission
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            alert('Terima kasih! Pesan Anda telah berhasil dikirim.');
+            e.target.reset();
+        }
+
+        // Fungsi untuk update active nav link berdasarkan scroll
+        function updateActiveNavLink() {
+            const sections = ['home', 'about', 'activities', 'structure', 'contact'];
+            const navLinks = document.querySelectorAll('.nav-link');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+            
+            // Cari section yang sedang aktif
+            let currentSection = 'home';
+            sections.forEach(section => {
+                const element = document.getElementById(section);
+                if (element) {
+                    const rect = element.getBoundingClientRect();
+                    if (rect.top <= 100 && rect.bottom >= 100) {
+                        currentSection = section;
+                    }
+                }
+            });
+            
+            // Update class active untuk nav links
+            navLinks.forEach(link => {
+                if (link.getAttribute('data-section') === currentSection) {
+                    link.classList.add('text-blue-600', 'border-b-2', 'border-blue-600');
+                } else {
+                    link.classList.remove('text-blue-600', 'border-b-2', 'border-blue-600');
+                }
+            });
+            
+            // Update class active untuk mobile nav links
+            mobileNavLinks.forEach(link => {
+                if (link.getAttribute('data-section') === currentSection) {
+                    link.classList.add('bg-blue-100', 'text-blue-600');
+                } else {
+                    link.classList.remove('bg-blue-100', 'text-blue-600');
+                }
+            });
+        }
+
+        // Fungsi untuk handle scroll effect pada navbar
+        function handleNavbarScroll() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('navbar-scrolled', 'py-2');
+                header.classList.remove('py-4');
+            } else {
+                header.classList.remove('navbar-scrolled', 'py-2');
+                header.classList.add('py-4');
+            }
+        }
+
+        // Fungsi untuk animasi fade-in saat scroll
+        function handleScrollAnimation() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        // Fungsi untuk inisialisasi
+        function init() {
+            // Sembunyikan loading screen setelah 1.5 detik
+            setTimeout(() => {
+                document.getElementById('loadingScreen').style.display = 'none';
+            }, 1500);
+            
+            // Setup event listeners
+            document.getElementById('mobileMenuButton').addEventListener('click', toggleMobileMenu);
+            document.getElementById('contactForm').addEventListener('submit', handleFormSubmit);
+            
+            // Setup testimonial interval
+            testimonialInterval = setInterval(nextTestimonial, 5000);
+            
+            // Setup testimonial indicators
+            document.querySelectorAll('.testimonial-indicator').forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    clearInterval(testimonialInterval);
+                    updateTestimonial(index);
+                    testimonialInterval = setInterval(nextTestimonial, 5000);
+                });
+            });
+            
+            // Setup navigation links
+            document.querySelectorAll('.nav-link, .mobile-nav-link, .footer-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const sectionId = link.getAttribute('href').substring(1);
+                    scrollToSection(sectionId);
+                });
+            });
+            
+            // Setup button actions
+            document.querySelector('.join-btn').addEventListener('click', () => scrollToSection('contact'));
+            document.querySelector('.learn-btn').addEventListener('click', () => scrollToSection('about'));
+            document.querySelector('.scroll-down-btn').addEventListener('click', () => scrollToSection('about'));
+            
+            // Setup scroll events
+            window.addEventListener('scroll', () => {
+                updateActiveNavLink();
+                handleNavbarScroll();
+                handleScrollAnimation();
+            });
+            
+            // Trigger initial animations
+            handleScrollAnimation();
+        }
+
+        // Jalankan inisialisasi saat DOM siap
+        document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
 </html>
