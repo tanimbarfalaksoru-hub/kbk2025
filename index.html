@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KKT-MBD Keuskupan Amboina</title>
+    <title>Kaum Bapak Katolik KKT-MBD Keuskupan Amboina</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -225,6 +225,43 @@
         .bidang-item {
             margin-bottom: 0.25rem;
         }
+        
+        /* Logo styling */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(to right, #1e40af, #d97706);
+            border-radius: 12px;
+            padding: 6px;
+            width: 48px;
+            height: 48px;
+        }
+        
+        .logo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        
+        .footer-logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(to right, #1e40af, #d97706);
+            border-radius: 8px;
+            padding: 4px;
+            width: 36px;
+            height: 36px;
+        }
+        
+        .footer-logo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 6px;
+        }
     </style>
 </head>
 <body class="min-h-screen bg-gradient-to-br from-blue-50 via-white to-amber-50">
@@ -232,12 +269,12 @@
     <div id="loadingScreen" class="fixed inset-0 flex items-center justify-center gradient-bg z-50">
         <div class="text-center">
             <div class="spinner mb-4"></div>
-            <h2 class="text-white text-xl font-semibold">Memuat KKT-MBD...</h2>
+            <h2 class="text-white text-xl font-semibold">Memuat KBK KKT-MBD...</h2>
         </div>
     </div>
 
     <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/62911123456?text=Halo%20KKT-MBD,%20saya%20ingin%20bergabung%20atau%20bertanya%20tentang%20organisasi%20ini" 
+    <a href="https://wa.me/62911123456?text=Halo%20KBK KKT-MBD,%20saya%20ingin%20bergabung%20atau%20bertanya%20tentang%20organisasi%20ini" 
        target="_blank" 
        class="fixed bottom-6 right-6 z-40 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-all duration-300 whatsapp-float">
         <i class="fab fa-whatsapp text-2xl"></i>
@@ -248,11 +285,15 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center">
                 <div class="flex items-center space-x-3">
-                    <div class="bg-gradient-to-r from-blue-600 to-amber-600 p-2 rounded-lg">
-                        <i class="fas fa-cross text-white text-xl"></i>
+                    <div class="logo-container">
+                        <img 
+                            src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi2PHcQZAszciTHDmSxyzrMENQ4cZx-qgZaeTRJmzKsG1KBtBbRE6wdl9UgiS8mqgEMvsbj-WAJ-OhSDKYz8k0XrgsMWobTFqWh2IjL2cZ5dPbh3A9-5-umpDlRba5-f_SVLAFSIHPsrCebX-m6_OQIMLcDBZBWOVHaCRqU3tZzteBk1AF232zR0gUpjORx/s320/Santo%20Yosep%20(3).png" 
+                            alt="Logo KKT-MBD" 
+                            class="logo-img"
+                        >
                     </div>
                     <div>
-                        <h1 class="text-xl font-bold text-gray-900">KKT-MBD</h1>
+                        <h1 class="text-xl font-bold text-gray-900">Kaum Bapak Katolik KKT-MBD</h1>
                         <p class="text-xs text-gray-600">Keuskupan Amboina</p>
                     </div>
                 </div>
@@ -295,11 +336,11 @@
                 <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
                     Kaum Bapak Katolik
                     <span class="heading-gradient block">
-                        KKT-MBD
+                        Wilayah KKT-MBD
                     </span>
                 </h1>
                 <p class="text-xl md:text-2xl text-gray-700 mb-8 max-w-3xl mx-auto leading-relaxed">
-                    Wadah persaudaraan para bapak Katolik yang berkomitmen untuk membangun iman, 
+                    Adalah wadah persaudaraan para Bapak Katolik yang berkomitmen untuk membangun iman, 
                     pelayanan dan kehidupan bermasyarakat yang berdasarkan kasih Kristus
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
@@ -325,16 +366,15 @@
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-bold text-gray-900 mb-4">Tentang Kami</h2>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Organisasi Kaum Bapak Katolik yang berdedikasi untuk memperkuat iman dan pelayanan 
-                    dalam bingkai keuskupan yang penuh kasih dan kebijaksanaan
+                    Organisasi Kaum Bapak Katolik Wilayah KKT-MBD berkomitmen untuk memperkuat iman dan pelayanan 
+                    dalam bingkai Kevikepan yang penuh kasih dan kebijaksanaan
                 </p>
             </div>
 
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div>
                     <img 
-                        src="https://media.istockphoto.com/id/1470967697/id/foto/santo-joseph-dan-bayi-yesus-citra-katolik.jpg?s=1024x1024&w=is&k=20&c=7hLMxoFOaUT4MNCiZONM53G4fJ9hQRBYmYpI6lYkBZ4="
-                        alt="Santo Joseph dan Bayi Yesus"
+                        src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjrKasDJXejRCIhmfTIbfjtM-V84wx4KROk8iHufbw5tMYN1A2U0px5H1rxcKVIvXhyFQSerAZvNuUKpJOx_RT2Vhh7eykZW65IR6Cr9W7f17MHqA1sy71ThS7V0bFYq_LoateTRwiSuB3RjxPCiOKNt_Aw_GpVOGABKuoUa-_uBmSUsNDjpIcmuxMzBIfp/w631-h355/santo%20yosep%20(2).png"
                         class="rounded-2xl shadow-2xl hover-card w-full h-96 object-cover"
                     />
                 </div>
@@ -386,20 +426,20 @@
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="bg-white rounded-2xl p-8 shadow-lg hover-card fade-in">
                     <div class="text-4xl mb-4">⛪</div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Ibadah Mingguan</h3>
-                    <p class="text-gray-600 mb-4">Ibadah bersama setiap Minggu pagi yang memperkuat ikatan spiritual dan komunitas</p>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Ibadah Bulanan</h3>
+                    <p class="text-gray-600 mb-4">Ibadah bersama setiap bulan untuk memperkuat ikatan spiritual dan komunitas</p>
                     <div class="flex items-center text-blue-600">
                         <i class="far fa-clock mr-2"></i>
-                        <span class="text-sm">Setiap Minggu, 06:00 WIT</span>
+                        <span class="text-sm">Setiap Bulan, 18:00 WIT</span>
                     </div>
                 </div>
                 <div class="bg-white rounded-2xl p-8 shadow-lg hover-card fade-in">
                     <div class="text-4xl mb-4">🤝</div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Pelayanan Sosial</h3>
-                    <p class="text-gray-600 mb-4">Program pelayanan kepada masyarakat yang membutuhkan, terutama dalam masa kesulitan</p>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Bakti Sosial</h3>
+                    <p class="text-gray-600 mb-4">Program bakti sosial</p>
                     <div class="flex items-center text-blue-600">
                         <i class="far fa-clock mr-2"></i>
-                        <span class="text-sm">Bulanan</span>
+                        <span class="text-sm">Semester</span>
                     </div>
                 </div>
                 <div class="bg-white rounded-2xl p-8 shadow-lg hover-card fade-in">
@@ -585,7 +625,7 @@
                             <div class="bidang-item">Hilarius Wandan, S.Sos, M.Si</div>
                             <div class="bidang-item">Sebastianus Batjedelik, ST</div>
                             <div class="bidang-item">Eliyas Koryesin</div>
-                            <div class="bidang-item">Petrus Ditilebit, S.Kom</div>
+                            <div class="bidang-item">Petrus Paulus Ditilebit, S.Kom</div>
                             <div class="bidang-item">Stanislaus Futwembun</div>
                             <div class="bidang-item">Andreas Luturyali</div>
                         </div>
@@ -656,7 +696,7 @@
                     </blockquote>
                     <div id="testimonialAuthor" class="testimonial-slide">
                         <p class="font-bold text-white text-lg">Benjamin Samangun, SH.MH</p>
-                        <p class="text-amber-200">Ketua Umum KBK KKT-MBD</p>
+                        <p class="text-amber-200">Ketua KBK Wilayah KKT-MBD</p>
                     </div>
                 </div>
                 
@@ -676,7 +716,7 @@
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-bold text-gray-900 mb-4">Hubungi Kami</h2>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Ingin bergabung atau mengetahui lebih lanjut tentang KKT-MBD? 
+                    Ingin bergabung atau mengetahui lebih lanjut tentang Kaum Bapak Katolik Wilayah KKT-MBD? 
                     Silakan hubungi kami melalui informasi berikut
                 </p>
             </div>
@@ -687,7 +727,7 @@
                         <i class="fas fa-map-marker-alt text-blue-600 mt-1"></i>
                         <div>
                             <h3 class="text-lg font-semibold text-gray-900">Alamat</h3>
-                            <p class="text-gray-600">Gereja Katolik Santo Yosep<br />Jl. Sultan Hasanuddin No. 1, Ambon<br />Maluku, Indonesia</p>
+                            <p class="text-gray-600">Gereja Katolik Santo Yosep<br />Jl. Bhineka, Saumlaki, Tanimbar Selatan<br />Kepulauan Tanimbar, Maluku</p>
                         </div>
                     </div>
                     
@@ -695,7 +735,7 @@
                         <i class="fas fa-phone text-blue-600 mt-1"></i>
                         <div>
                             <h3 class="text-lg font-semibold text-gray-900">Telepon</h3>
-                            <p class="text-gray-600">+62 911 123456<br />+62 911 789012</p>
+                            <p class="text-gray-600">+6282197722366<br />+6282197722366</p>
                         </div>
                     </div>
                     
@@ -703,7 +743,7 @@
                         <i class="fas fa-envelope text-blue-600 mt-1"></i>
                         <div>
                             <h3 class="text-lg font-semibold text-gray-900">Email</h3>
-                            <p class="text-gray-600">kktmbd@keuskupanamboina.org<br />info@kktmbd-ambon.org</p>
+                            <p class="text-gray-600">kktmbd@keuskupanamboina.org<br />info@kktmbd-tanimbar.org</p>
                         </div>
                     </div>
                     
@@ -711,7 +751,7 @@
                         <i class="fab fa-whatsapp text-green-600 mt-1 text-xl"></i>
                         <div>
                             <h3 class="text-lg font-semibold text-gray-900">WhatsApp</h3>
-                            <p class="text-gray-600">+62 911 123456</p>
+                            <p class="text-gray-600">+6282197722366</p>
                             <button class="mt-2 bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors duration-200 whatsapp-contact-btn">
                                 <i class="fab fa-whatsapp mr-2"></i>Hubungi via WhatsApp
                             </button>
@@ -806,11 +846,15 @@
             <div class="grid md:grid-cols-4 gap-8">
                 <div class="md:col-span-2">
                     <div class="flex items-center space-x-3 mb-4">
-                        <div class="bg-gradient-to-r from-blue-600 to-amber-600 p-2 rounded-lg">
-                            <i class="fas fa-cross text-white"></i>
+                        <div class="footer-logo-container">
+                            <img 
+                                src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi2PHcQZAszciTHDmSxyzrMENQ4cZx-qgZaeTRJmzKsG1KBtBbRE6wdl9UgiS8mqgEMvsbj-WAJ-OhSDKYz8k0XrgsMWobTFqWh2IjL2cZ5dPbh3A9-5-umpDlRba5-f_SVLAFSIHPsrCebX-m6_OQIMLcDBZBWOVHaCRqU3tZzteBk1AF232zR0gUpjORx/s320/Santo%20Yosep%20(3).png" 
+                                alt="Logo KKT-MBD" 
+                                class="footer-logo-img"
+                            >
                         </div>
                         <div>
-                            <h3 class="text-lg font-bold">KKT-MBD</h3>
+                            <h3 class="text-lg font-bold">Kaum Bapak Katolik KKT-MBD</h3>
                             <p class="text-sm text-gray-400">Keuskupan Amboina</p>
                         </div>
                     </div>
@@ -868,7 +912,7 @@
         const testimonials = [
             {
                 name: "Benjamin Samangun, SH.MH",
-                role: "Ketua Umum KBK KKT-MBD",
+                role: "Ketua KBK KKT-MBD",
                 text: "Kami berkomitmen untuk menjadi wadah persaudaraan yang memperkuat iman dan kehidupan bermasyarakat."
             },
             {
@@ -970,10 +1014,10 @@
             }
             
             // Format pesan untuk WhatsApp
-            const whatsappMessage = `Halo KKT-MBD Keuskupan Amboina,%0A%0ASaya ${name} ingin menghubungi Anda.%0A%0ARincian:%0A- Email: ${email}%0A- Subjek: ${subject}%0A- Pesan: ${message}%0A%0ATerima kasih.`;
+            const whatsappMessage = `Halo KBK KKT-MBD Keuskupan Amboina,%0A%0ASaya ${name} ingin menyampaikan sesuatu untuk Anda.%0A%0ARincian:%0A- Email: ${email}%0A- Subjek: ${subject}%0A- Pesan: ${message}%0A%0ATerima kasih.`;
             
             // Nomor WhatsApp (dengan format internasional)
-            const phoneNumber = "62911123456";
+            const phoneNumber = "6282197722366";
             
             // Buat URL WhatsApp
             const whatsappURL = `https://wa.me/${phoneNumber}?text=${whatsappMessage}`;
@@ -1058,7 +1102,7 @@
             
             // Setup tombol WhatsApp di bagian kontak
             document.querySelector('.whatsapp-contact-btn').addEventListener('click', () => {
-                const whatsappURL = `https://wa.me/62911123456?text=Halo%20KKT-MBD,%20saya%20ingin%20bertanya%20tentang%20organisasi%20ini`;
+                const whatsappURL = `https://wa.me/6282197722366?text=Halo%20KBK KKT-MBD,%20saya%20ingin%20bertanya%20tentang%20organisasi%20ini`;
                 window.open(whatsappURL, '_blank');
             });
             
