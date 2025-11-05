@@ -150,6 +150,81 @@
                 box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
             }
         }
+        
+        /* Media sosial styles */
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: scale(1.2);
+        }
+        
+        /* Map container */
+        .map-container {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Struktur Organisasi Styles */
+        .org-section {
+            margin-bottom: 2rem;
+        }
+        
+        .org-category {
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-amber);
+        }
+        
+        .org-position {
+            font-weight: 600;
+            color: #4b5563;
+        }
+        
+        .org-name {
+            color: #1f2937;
+        }
+        
+        .org-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+        
+        .org-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .org-card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        .bidang-section {
+            margin-top: 1.5rem;
+        }
+        
+        .bidang-title {
+            font-weight: bold;
+            color: var(--primary-amber);
+            margin-bottom: 0.5rem;
+        }
+        
+        .bidang-list {
+            margin-left: 1rem;
+        }
+        
+        .bidang-item {
+            margin-bottom: 0.25rem;
+        }
     </style>
 </head>
 <body class="min-h-screen bg-gradient-to-br from-blue-50 via-white to-amber-50">
@@ -258,7 +333,8 @@
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div>
                     <img 
-                        src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjrKasDJXejRCIhmfTIbfjtM-V84wx4KROk8iHufbw5tMYN1A2U0px5H1rxcKVIvXhyFQSerAZvNuUKpJOx_RT2Vhh7eykZW65IR6Cr9W7f17MHqA1sy71ThS7V0bFYq_LoateTRwiSuB3RjxPCiOKNt_Aw_GpVOGABKuoUa-_uBmSUsNDjpIcmuxMzBIfp/w631-h355/santo%20yosep%20(2).png"
+                        src="https://media.istockphoto.com/id/1470967697/id/foto/santo-joseph-dan-bayi-yesus-citra-katolik.jpg?s=1024x1024&w=is&k=20&c=7hLMxoFOaUT4MNCiZONM53G4fJ9hQRBYmYpI6lYkBZ4="
+                        alt="Santo Joseph dan Bayi Yesus"
                         class="rounded-2xl shadow-2xl hover-card w-full h-96 object-cover"
                     />
                 </div>
@@ -346,70 +422,222 @@
                 <h2 class="text-4xl font-bold text-gray-900 mb-4">Struktur Organisasi</h2>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto">
                     Pemimpin yang berdedikasi dan kompeten yang membimbing organisasi kami 
-                    dengan semangat pelayanan dan kasih Kristus
+                    dengan semangat pelayanan dan kasih Kristus. Periode 2025 - 2028.
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-gradient-to-br from-blue-50 to-amber-50 rounded-2xl p-6 text-center hover-card fade-in">
-                    <img 
-                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
-                        alt="Pak Yusuf Latuconsina"
-                        class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-white shadow-md"
-                    />
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Pak Yusuf Latuconsina</h3>
-                    <p class="text-blue-600 font-semibold mb-3">Ketua Umum</p>
-                    <p class="text-gray-600 text-sm">Pemimpin visioner dengan pengalaman panjang dalam pelayanan gerejawi</p>
+            <!-- Pelindung dan Penasehat -->
+            <div class="org-section">
+                <h3 class="org-category text-2xl mb-6">PELINDUNG DAN PENASEHAT</h3>
+                <div class="org-grid">
+                    <div class="org-card">
+                        <h4 class="org-position">Pelindung</h4>
+                        <p class="org-name">VIKEP KEUSKUPAN AMBOINA WILAYAH KKT-MBD</p>
+                    </div>
+                    <div class="org-card">
+                        <h4 class="org-position">Penasehat Rohani</h4>
+                        <p class="org-name">KETUA KOMISI KERAWAM KEUSKUPAN AMBOINA WILAYAH KKT-MBD</p>
+                    </div>
                 </div>
-                <div class="bg-gradient-to-br from-blue-50 to-amber-50 rounded-2xl p-6 text-center hover-card fade-in">
-                    <img 
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-                        alt="Pak Fransisco Rumbrawer"
-                        class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-white shadow-md"
-                    />
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Pak Fransisco Rumbrawer</h3>
-                    <p class="text-blue-600 font-semibold mb-3">Sekretaris Umum</p>
-                    <p class="text-gray-600 text-sm">Ahli administrasi dengan komitmen tinggi terhadap organisasi</p>
+                
+                <div class="mt-6">
+                    <h4 class="org-position mb-4">Penasehat Awam</h4>
+                    <div class="org-grid">
+                        <div class="org-card">
+                            <p class="org-name">Ricky Laurent Ang</p>
+                        </div>
+                        <div class="org-card">
+                            <p class="org-name">Petrus Paulus Werembinan, SH</p>
+                        </div>
+                        <div class="org-card">
+                            <p class="org-name">Christianus Ganwarin</p>
+                        </div>
+                        <div class="org-card">
+                            <p class="org-name">Drs. Petrus Paulus Abeyaman</p>
+                        </div>
+                        <div class="org-card">
+                            <p class="org-name">Agustinus Songupnuan, ST</p>
+                        </div>
+                        <div class="org-card">
+                            <p class="org-name">Agus Rettob, SP</p>
+                        </div>
+                        <div class="org-card">
+                            <p class="org-name">Aldin Dion Ressy</p>
+                        </div>
+                        <div class="org-card">
+                            <p class="org-name">Loeborius Samangun, S.Sos</p>
+                        </div>
+                        <div class="org-card">
+                            <p class="org-name">Deddi Son Titirloloby, S.Sos</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="bg-gradient-to-br from-blue-50 to-amber-50 rounded-2xl p-6 text-center hover-card fade-in">
-                    <img 
-                        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
-                        alt="Pak Petrus Manuputty"
-                        class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-white shadow-md"
-                    />
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Pak Petrus Manuputty</h3>
-                    <p class="text-blue-600 font-semibold mb-3">Bendahara</p>
-                    <p class="text-gray-600 text-sm">Profesional keuangan yang menjaga transparansi dan akuntabilitas</p>
+            </div>
+
+            <!-- Pengurus Harian -->
+            <div class="org-section">
+                <h3 class="org-category text-2xl mb-6">PENGURUS HARIAN</h3>
+                <div class="org-grid">
+                    <div class="org-card">
+                        <h4 class="org-position">Ketua</h4>
+                        <p class="org-name">Benyamin Samangun, SH, MH</p>
+                    </div>
+                    <div class="org-card">
+                        <h4 class="org-position">Wakil Ketua I</h4>
+                        <p class="org-name">Mathias Rangkore, ST</p>
+                    </div>
+                    <div class="org-card">
+                        <h4 class="org-position">Wakil Ketua II</h4>
+                        <p class="org-name">Ferminus Torimtubun</p>
+                    </div>
+                    <div class="org-card">
+                        <h4 class="org-position">Sekretaris I</h4>
+                        <p class="org-name">Marthin Desa, S.Sos</p>
+                    </div>
+                    <div class="org-card">
+                        <h4 class="org-position">Sekretaris II</h4>
+                        <p class="org-name">Robertus Tupamahu, SE</p>
+                    </div>
+                    <div class="org-card">
+                        <h4 class="org-position">Bendahara</h4>
+                        <p class="org-name">Venansius Futwembun</p>
+                    </div>
                 </div>
-                <div class="bg-gradient-to-br from-blue-50 to-amber-50 rounded-2xl p-6 text-center hover-card fade-in">
-                    <img 
-                        src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
-                        alt="Ibu Maria Siahaya"
-                        class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-white shadow-md"
-                    />
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Ibu Maria Siahaya</h3>
-                    <p class="text-blue-600 font-semibold mb-3">Ketua Bidang Sosial</p>
-                    <p class="text-gray-600 text-sm">Pemimpin pelayanan sosial yang penuh semangat dan kasih</p>
+                
+                <div class="mt-6">
+                    <h4 class="org-position mb-4">Sekretariat</h4>
+                    <div class="org-grid">
+                        <div class="org-card">
+                            <p class="org-name">Paulus Dionisius Moy Layan, SH</p>
+                        </div>
+                        <div class="org-card">
+                            <p class="org-name">Amandus Jamrewav, ST</p>
+                        </div>
+                        <div class="org-card">
+                            <p class="org-name">Daniel Masela, S.Hut</p>
+                        </div>
+                        <div class="org-card">
+                            <p class="org-name">Hendrikus Futunanembun, S.Kom</p>
+                        </div>
+                        <div class="org-card">
+                            <p class="org-name">Thomas Narwadan, S.Pd</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="bg-gradient-to-br from-blue-50 to-amber-50 rounded-2xl p-6 text-center hover-card fade-in">
-                    <img 
-                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
-                        alt="Pak Daniel Kastanya"
-                        class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-white shadow-md"
-                    />
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Pak Daniel Kastanya</h3>
-                    <p class="text-blue-600 font-semibold mb-3">Ketua Bidang Spiritual</p>
-                    <p class="text-gray-600 text-sm">Pendamping spiritual dengan kebijaksanaan dan ketulusan luar biasa</p>
+            </div>
+
+            <!-- Bidang-Bidang -->
+            <div class="org-section">
+                <h3 class="org-category text-2xl mb-6">BIDANG-BIDANG</h3>
+                
+                <div class="bidang-section">
+                    <h4 class="bidang-title">1. Bidang Kerohanian</h4>
+                    <div class="org-card">
+                        <p class="org-position mb-2">Koordinator:</p>
+                        <p class="org-name">Modestus Rangkore, S.Pd</p>
+                        <div class="bidang-list mt-3">
+                            <p class="org-position mb-1">Anggota:</p>
+                            <div class="bidang-item">Gaudensius Sorluri, S.Ag</div>
+                            <div class="bidang-item">Yohanis Koisine, S.Pd</div>
+                            <div class="bidang-item">Paulus Nusmese, S.Pd</div>
+                            <div class="bidang-item">Yohanis Baharudin</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="bg-gradient-to-br from-blue-50 to-amber-50 rounded-2xl p-6 text-center hover-card fade-in">
-                    <img 
-                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
-                        alt="Pak Yohanes Ririmasse"
-                        class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-white shadow-md"
-                    />
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Pak Yohanes Ririmasse</h3>
-                    <p class="text-blue-600 font-semibold mb-3">Ketua Bidang Kepemudaan</p>
-                    <p class="text-gray-600 text-sm">Pembina generasi muda dengan semangat dan dedikasi tinggi</p>
+                
+                <div class="bidang-section">
+                    <h4 class="bidang-title">2. Bidang Kesenian dan Olah Raga</h4>
+                    <div class="org-card">
+                        <p class="org-position mb-2">Koordinator:</p>
+                        <p class="org-name">Yoseph Ratuanik, S.Pd</p>
+                        <div class="bidang-list mt-3">
+                            <p class="org-position mb-1">Anggota:</p>
+                            <div class="bidang-item">Ignasius Londar, S.Sos</div>
+                            <div class="bidang-item">Jemi Titirloloby, SH</div>
+                            <div class="bidang-item">Petrus Sermatang</div>
+                            <div class="bidang-item">Yohanis Fanumby</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bidang-section">
+                    <h4 class="bidang-title">3. Bidang Kerasulan Awam</h4>
+                    <div class="org-card">
+                        <p class="org-position mb-2">Koordinator:</p>
+                        <p class="org-name">Wilhelmus Londar, S.Sos, S.Ag</p>
+                        <div class="bidang-list mt-3">
+                            <p class="org-position mb-1">Anggota:</p>
+                            <div class="bidang-item">Drs. Januarius Rettob, M.Si</div>
+                            <div class="bidang-item">Paskalis Wuarlela, S.Pd</div>
+                            <div class="bidang-item">Yoseph Lamere</div>
+                            <div class="bidang-item">Tobias Masriat</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bidang-section">
+                    <h4 class="bidang-title">4. Bidang Organisasi, Kaderisasi dan Keanggotaan</h4>
+                    <div class="org-card">
+                        <p class="org-position mb-2">Koordinator:</p>
+                        <p class="org-name">Kornelis Waturu, S.Fil</p>
+                        <div class="bidang-list mt-3">
+                            <p class="org-position mb-1">Anggota:</p>
+                            <div class="bidang-item">Hilarius Wandan, S.Sos, M.Si</div>
+                            <div class="bidang-item">Sebastianus Batjedelik, ST</div>
+                            <div class="bidang-item">Eliyas Koryesin</div>
+                            <div class="bidang-item">Petrus Ditilebit, S.Kom</div>
+                            <div class="bidang-item">Stanislaus Futwembun</div>
+                            <div class="bidang-item">Andreas Luturyali</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bidang-section">
+                    <h4 class="bidang-title">5. Bidang Hubungan Masyarakat, Dokumentasi dan Publikasi</h4>
+                    <div class="org-card">
+                        <p class="org-position mb-2">Koordinator:</p>
+                        <p class="org-name">Agustinus Ohoitimur, S.Sos, M.I.Kom</p>
+                        <div class="bidang-list mt-3">
+                            <p class="org-position mb-1">Anggota:</p>
+                            <div class="bidang-item">Alfred Fredo S.Kom, MM</div>
+                            <div class="bidang-item">Benyamin Somarwain, SE</div>
+                            <div class="bidang-item">Hendrikus Jake Lalamafu</div>
+                            <div class="bidang-item">Yohanis Fasse, A.Md</div>
+                            <div class="bidang-item">Pius Manuwembun, S.Fil</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bidang-section">
+                    <h4 class="bidang-title">6. Bidang Akomodasi dan Perlengkapan</h4>
+                    <div class="org-card">
+                        <p class="org-position mb-2">Koordinator:</p>
+                        <p class="org-name">Bernardus Metantomwate</p>
+                        <div class="bidang-list mt-3">
+                            <p class="org-position mb-1">Anggota:</p>
+                            <div class="bidang-item">Denis Santo</div>
+                            <div class="bidang-item">Yoseph Ranbalak, S.Kom</div>
+                            <div class="bidang-item">Agapitus Talangembun</div>
+                            <div class="bidang-item">Edmondus Taborat</div>
+                            <div class="bidang-item">Ricky Fanulene</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bidang-section">
+                    <h4 class="bidang-title">7. Bidang Usaha Dana, Sosial Ekonomi dan Karitatib</h4>
+                    <div class="org-card">
+                        <p class="org-position mb-2">Koordinator:</p>
+                        <p class="org-name">Fransiskus Batfiano, S.Hut</p>
+                        <div class="bidang-list mt-3">
+                            <p class="org-position mb-1">Anggota:</p>
+                            <div class="bidang-item">Bonafentura Ratuanik</div>
+                            <div class="bidang-item">Silverinus Arbol, S.Sos</div>
+                            <div class="bidang-item">Julius Mangende, ST</div>
+                            <div class="bidang-item">Roby Rajagukguk</div>
+                            <div class="bidang-item">Petrus Wermasubun</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -489,47 +717,84 @@
                             </button>
                         </div>
                     </div>
+                    
+                    <!-- Media Sosial -->
+                    <div class="hover-card p-4 rounded-xl bg-gradient-to-br from-blue-50 to-amber-50">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">Ikuti Kami di Media Sosial</h3>
+                        <div class="flex space-x-4">
+                            <a href="https://facebook.com/kktmbd" target="_blank" class="social-icon bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://instagram.com/kktmbd" target="_blank" class="social-icon bg-pink-600 text-white p-3 rounded-full hover:bg-pink-700">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://youtube.com/kktmbd" target="_blank" class="social-icon bg-red-600 text-white p-3 rounded-full hover:bg-red-700">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                            <a href="https://twitter.com/kktmbd" target="_blank" class="social-icon bg-blue-400 text-white p-3 rounded-full hover:bg-blue-500">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="bg-gradient-to-br from-blue-50 to-amber-50 p-8 rounded-2xl hover-card">
-                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Kirim Pesan</h3>
-                    <form id="contactForm" class="space-y-4">
-                        <input 
-                            type="text" 
-                            id="name"
-                            placeholder="Nama Lengkap"
-                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                            required
-                        />
-                        <input 
-                            type="email" 
-                            id="email"
-                            placeholder="Email Anda"
-                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                            required
-                        />
-                        <input 
-                            type="text" 
-                            id="subject"
-                            placeholder="Subjek"
-                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                            required
-                        />
-                        <textarea 
-                            rows="4"
-                            id="message"
-                            placeholder="Pesan Anda"
-                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                            required
-                        ></textarea>
-                        <button 
-                            type="button"
-                            id="whatsappSubmit"
-                            class="w-full bg-green-500 text-white py-3 rounded-lg font-semibold transform transition-all duration-200 hover:bg-green-600 hover:shadow-lg flex items-center justify-center"
-                        >
-                            <i class="fab fa-whatsapp mr-2 text-xl"></i>Kirim via WhatsApp
-                        </button>
-                    </form>
+                <div class="space-y-8">
+                    <div class="bg-gradient-to-br from-blue-50 to-amber-50 p-8 rounded-2xl hover-card">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6">Kirim Pesan</h3>
+                        <form id="contactForm" class="space-y-4">
+                            <input 
+                                type="text" 
+                                id="name"
+                                placeholder="Nama Lengkap"
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                                required
+                            />
+                            <input 
+                                type="email" 
+                                id="email"
+                                placeholder="Email Anda"
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                                required
+                            />
+                            <input 
+                                type="text" 
+                                id="subject"
+                                placeholder="Subjek"
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                                required
+                            />
+                            <textarea 
+                                rows="4"
+                                id="message"
+                                placeholder="Pesan Anda"
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                                required
+                            ></textarea>
+                            <button 
+                                type="button"
+                                id="whatsappSubmit"
+                                class="w-full bg-green-500 text-white py-3 rounded-lg font-semibold transform transition-all duration-200 hover:bg-green-600 hover:shadow-lg flex items-center justify-center"
+                            >
+                                <i class="fab fa-whatsapp mr-2 text-xl"></i>Kirim via WhatsApp
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <!-- Peta Lokasi -->
+                    <div class="hover-card p-4 rounded-xl bg-gradient-to-br from-blue-50 to-amber-50">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Lokasi Kami</h3>
+                        <div class="map-container">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d493.8972814266204!2d131.29721982908524!3d-7.980519079567419!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d2755ddc5b3ac45%3A0xc21da88eb9301e92!2sRATULEL!5e0!3m2!1sid!2sid!4v1762325269953!5m2!1sid!2sid" 
+                                width="100%" 
+                                height="300" 
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -538,21 +803,37 @@
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-12 fade-in">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-3 gap-8">
-                <div>
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
                     <div class="flex items-center space-x-3 mb-4">
                         <div class="bg-gradient-to-r from-blue-600 to-amber-600 p-2 rounded-lg">
                             <i class="fas fa-cross text-white"></i>
                         </div>
                         <div>
-                            <h3 class="text-lg font-bold">Kaum Bapak Katolik KKT-MBD</h3>
+                            <h3 class="text-lg font-bold">KKT-MBD</h3>
                             <p class="text-sm text-gray-400">Keuskupan Amboina</p>
                         </div>
                     </div>
-                    <p class="text-gray-400">
+                    <p class="text-gray-400 mb-6">
                         Wadah persaudaraan kaum bapak Katolik yang berdedikasi untuk memperkuat iman 
                         dan pelayanan dalam bingkai kasih Kristus.
                     </p>
+                    
+                    <!-- Media Sosial di Footer -->
+                    <div class="flex space-x-4">
+                        <a href="https://facebook.com/kktmbd" target="_blank" class="social-icon bg-gray-700 text-white p-2 rounded-full hover:bg-blue-600">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://instagram.com/kktmbd" target="_blank" class="social-icon bg-gray-700 text-white p-2 rounded-full hover:bg-pink-600">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://youtube.com/kktmbd" target="_blank" class="social-icon bg-gray-700 text-white p-2 rounded-full hover:bg-red-600">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://twitter.com/kktmbd" target="_blank" class="social-icon bg-gray-700 text-white p-2 rounded-full hover:bg-blue-400">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
                 </div>
                 
                 <div>
@@ -561,6 +842,7 @@
                         <li><a href="#home" class="hover:text-white transition-colors footer-link">Beranda</a></li>
                         <li><a href="#about" class="hover:text-white transition-colors footer-link">Tentang Kami</a></li>
                         <li><a href="#activities" class="hover:text-white transition-colors footer-link">Kegiatan</a></li>
+                        <li><a href="#structure" class="hover:text-white transition-colors footer-link">Struktur</a></li>
                         <li><a href="#contact" class="hover:text-white transition-colors footer-link">Kontak</a></li>
                     </ul>
                 </div>
