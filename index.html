@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kaum Bapak Katolik KKT-MBD Keuskupan Amboina</title>
+    <title>KKT-MBD Keuskupan Amboina</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -133,6 +133,23 @@
             backdrop-filter: blur(10px);
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
+        
+        /* WhatsApp button animation */
+        .whatsapp-float {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
     </style>
 </head>
 <body class="min-h-screen bg-gradient-to-br from-blue-50 via-white to-amber-50">
@@ -144,6 +161,13 @@
         </div>
     </div>
 
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/62911123456?text=Halo%20KKT-MBD,%20saya%20ingin%20bergabung%20atau%20bertanya%20tentang%20organisasi%20ini" 
+       target="_blank" 
+       class="fixed bottom-6 right-6 z-40 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-all duration-300 whatsapp-float">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+
     <!-- Header -->
     <header id="header" class="fixed w-full z-40 transition-all duration-300 py-4">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -153,7 +177,7 @@
                         <i class="fas fa-cross text-white text-xl"></i>
                     </div>
                     <div>
-                        <h1 class="text-xl font-bold text-gray-900">Kaum Bapak Katolik KKT-MBD</h1>
+                        <h1 class="text-xl font-bold text-gray-900">KKT-MBD</h1>
                         <p class="text-xs text-gray-600">Keuskupan Amboina</p>
                     </div>
                 </div>
@@ -234,9 +258,9 @@
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div>
                     <img 
-                        src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1473&q=80"
-                        alt="Gereja Katolik Amboina"
-                        class="rounded-2xl shadow-2xl hover-card w-full"
+                        src="https://media.istockphoto.com/id/1470967697/id/foto/santo-joseph-dan-bayi-yesus-citra-katolik.jpg?s=1024x1024&w=is&k=20&c=7hLMxoFOaUT4MNCiZONM53G4fJ9hQRBYmYpI6lYkBZ4="
+                        alt="Santo Joseph dan Bayi Yesus"
+                        class="rounded-2xl shadow-2xl hover-card w-full h-96 object-cover"
                     />
                 </div>
                 <div class="space-y-6">
@@ -455,6 +479,17 @@
                             <p class="text-gray-600">kktmbd@keuskupanamboina.org<br />info@kktmbd-ambon.org</p>
                         </div>
                     </div>
+                    
+                    <div class="flex items-start space-x-4 hover-card p-4 rounded-xl bg-green-50 border border-green-200">
+                        <i class="fab fa-whatsapp text-green-600 mt-1 text-xl"></i>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">WhatsApp</h3>
+                            <p class="text-gray-600">+62 911 123456</p>
+                            <button class="mt-2 bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors duration-200 whatsapp-contact-btn">
+                                <i class="fab fa-whatsapp mr-2"></i>Hubungi via WhatsApp
+                            </button>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="bg-gradient-to-br from-blue-50 to-amber-50 p-8 rounded-2xl hover-card">
@@ -462,33 +497,38 @@
                     <form id="contactForm" class="space-y-4">
                         <input 
                             type="text" 
+                            id="name"
                             placeholder="Nama Lengkap"
                             class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                             required
                         />
                         <input 
                             type="email" 
+                            id="email"
                             placeholder="Email Anda"
                             class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                             required
                         />
                         <input 
                             type="text" 
+                            id="subject"
                             placeholder="Subjek"
                             class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                             required
                         />
                         <textarea 
                             rows="4"
+                            id="message"
                             placeholder="Pesan Anda"
                             class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                             required
                         ></textarea>
                         <button 
-                            type="submit"
-                            class="w-full btn-primary text-white py-3 rounded-lg font-semibold transform transition-all duration-200"
+                            type="button"
+                            id="whatsappSubmit"
+                            class="w-full bg-green-500 text-white py-3 rounded-lg font-semibold transform transition-all duration-200 hover:bg-green-600 hover:shadow-lg flex items-center justify-center"
                         >
-                            Kirim Pesan
+                            <i class="fab fa-whatsapp mr-2 text-xl"></i>Kirim via WhatsApp
                         </button>
                     </form>
                 </div>
@@ -635,11 +675,30 @@
             mobileMenuButton.innerHTML = '<i class="fas fa-bars text-xl"></i>';
         }
 
-        // Fungsi untuk handle form submission
-        function handleFormSubmit(e) {
-            e.preventDefault();
-            alert('Terima kasih! Pesan Anda telah berhasil dikirim.');
-            e.target.reset();
+        // Fungsi untuk mengirim pesan WhatsApp
+        function sendWhatsAppMessage() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Validasi form
+            if (!name || !email || !subject || !message) {
+                alert('Harap lengkapi semua field sebelum mengirim pesan.');
+                return;
+            }
+            
+            // Format pesan untuk WhatsApp
+            const whatsappMessage = `Halo KKT-MBD Keuskupan Amboina,%0A%0ASaya ${name} ingin menghubungi Anda.%0A%0ARincian:%0A- Email: ${email}%0A- Subjek: ${subject}%0A- Pesan: ${message}%0A%0ATerima kasih.`;
+            
+            // Nomor WhatsApp (dengan format internasional)
+            const phoneNumber = "62911123456";
+            
+            // Buat URL WhatsApp
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${whatsappMessage}`;
+            
+            // Buka WhatsApp
+            window.open(whatsappURL, '_blank');
         }
 
         // Fungsi untuk update active nav link berdasarkan scroll
@@ -714,7 +773,13 @@
             
             // Setup event listeners
             document.getElementById('mobileMenuButton').addEventListener('click', toggleMobileMenu);
-            document.getElementById('contactForm').addEventListener('submit', handleFormSubmit);
+            document.getElementById('whatsappSubmit').addEventListener('click', sendWhatsAppMessage);
+            
+            // Setup tombol WhatsApp di bagian kontak
+            document.querySelector('.whatsapp-contact-btn').addEventListener('click', () => {
+                const whatsappURL = `https://wa.me/62911123456?text=Halo%20KKT-MBD,%20saya%20ingin%20bertanya%20tentang%20organisasi%20ini`;
+                window.open(whatsappURL, '_blank');
+            });
             
             // Setup testimonial interval
             testimonialInterval = setInterval(nextTestimonial, 5000);
